@@ -16,6 +16,7 @@ django-pure-pagination = "*"
 elasticsearch = ">=2,<3"
 django-haystack = "*"
 setuptools-scm = "*"
+importlib-metadata = "*"
 
 [requires]
 python_version = "3"
