@@ -28,7 +28,7 @@ services:
     image: hellodjango_blog_ydm_nginx
     container_name: hellodjango_blog_ydm_nginx
     volumes:
-      - static:/apps/hellodjango_blog_ydm/static
+      - static:/apps/Hellodjango_blog_ydm/static
     ports:
       - "80:80"
       - "443:443"
