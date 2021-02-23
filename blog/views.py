@@ -45,6 +45,11 @@ def category(request, pk):
     post_list = Post.objects.filter(category=cate).order_by('-created_time')
     return render(request, 'blog/index.html', context={'post_list': post_list}) 
 
+class CategoryView(IndexView):
+    def get_queryset(self):
+        cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
+        return super(CategoryView, self).get_queryset().filter(category=cate)
+
 def tag(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
     post_list = Post.objects.filter(tag=tag).order_by('-created_time')
