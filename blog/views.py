@@ -19,6 +19,10 @@ def index(request):
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+
+    # 阅读量 +1
+    post.increase_views()
+
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',  # extra 本身包含很多基础拓展
         'markdown.extensions.codehilite',  # codehilite 是语法高亮拓展
