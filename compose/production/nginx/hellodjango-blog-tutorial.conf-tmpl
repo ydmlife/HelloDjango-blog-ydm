@@ -6,7 +6,7 @@ server {
     server_name  hellodjango-blog-ydm.yaodianmi.top;
 
     location /static {
-        alias /apps/hellodjango_blog_ydm/static;
+        alias /apps/Hellodjango_blog_ydm/static;
     }
 
     location / {
