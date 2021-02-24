@@ -7,10 +7,12 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from django.utils.text import slugify
 
+from pure_pagination.mixins import PaginationMixin
+
 from .models import Post, Category, Tag
 
 
-class IndexView(ListView):
+class IndexView(PaginationMixin, ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
