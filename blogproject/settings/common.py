@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pure_pagination',  # 分页
+    'haystack',
 
     'blog.apps.BlogConfig',  # 注册blog应用
     'comments.apps.CommentsConfig',  # 注册comments应用
@@ -130,3 +131,17 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 2, # 分页条开头和结尾显示的页数
     'SHOW_FIRST_PAGE_WHEN_INVALID': True, # 当请求了不存在页，显示第一页
 }
+
+
+# 搜索设置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine',
+        'URL': '',
+        'INDEX_NAME': 'hellodjango_blog_ydm',
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_CUSTOM_HIGHLIGHTER = 'blog.utils.Highlighter'
+

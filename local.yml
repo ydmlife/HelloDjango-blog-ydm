@@ -4,12 +4,12 @@ volumes:
   database_local:
 
 services:
-  hellodjango_blog_tutorial_local:
+  hellodjango_blog_ydm_local:
     build:
       context: .
       dockerfile: ./compose/local/Dockerfile
-    image: hellodjango_blog_tutorial_local
-    container_name: hellodjango_blog_tutorial_local
+    image: hellodjango_blog_ydm_local
+    container_name: hellodjango_blog_ydm_local
     working_dir: /app
     volumes:
       - database_local:/app/database
@@ -17,3 +17,26 @@ services:
     ports:
       - "8000:8000"
     command: /start.sh
+    depends_on:
+      - elasticsearch_local
+  
+  elasticsearch_local:
+    build:
+      context: .
+      dockerfile: ./compose/production/elasticsearch/Dockerfile
+    image: hellodjango_blog_ydm_elasticsearch_local
+    container_name: hellodjango_blog_ydm_elasticsearch_local
+    volumes:
+      - esdata_local:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nproc: 65536
+      nofile:
+        soft: 65536
+        hard: 65536

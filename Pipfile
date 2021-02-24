@@ -14,10 +14,9 @@ gunicorn = "*"
 faker = "*"
 django-pure-pagination = "*"
 elasticsearch = ">=2,<3"
-django-haystack = "*"
 setuptools-scm = "*"
 importlib-metadata = "*"
-haystack = "*"
+django-haystack = "*"
 
 [requires]
 python_version = "3"
