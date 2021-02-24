@@ -17,6 +17,7 @@ elasticsearch = ">=2,<3"
 django-haystack = "*"
 setuptools-scm = "*"
 importlib-metadata = "*"
+haystack = "*"
 
 [requires]
 python_version = "3"
